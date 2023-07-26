@@ -17,13 +17,30 @@ public class Contract {
     @Column(name = "monthly_rate", nullable = false)
     private int monthlyRate;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "customer_info", nullable = false)
-    private Customer customerFullName;
+    @Column(name = "first_name")
+    private String firstName;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "car_info", nullable = false)
-    private Vehicle carInfo;
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Column(name = "brand")
+    private String brand;
+
+    @Column(name = "model")
+    private String model;
+
+    @Column(name = "vin")
+    private String vin;
+
+    @Column(nullable = false)
+    private int year;
+
+    @OneToOne(mappedBy = "contract")
+    private Vehicle vehicle;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_customer_id")
+    private Customer customer;
 
     public Long getId() {
         return id;
@@ -49,19 +66,67 @@ public class Contract {
         this.monthlyRate = monthlyRate;
     }
 
-    public Customer getCustomerFullName() {
-        return customerFullName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setCustomerFullName(Customer customerFullName) {
-        this.customerFullName = customerFullName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public Vehicle getCarInfo() {
-        return carInfo;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setCarInfo(Vehicle carInfo) {
-        this.carInfo = carInfo;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getVin() {
+        return vin;
+    }
+
+    public void setVin(String vin) {
+        this.vin = vin;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }

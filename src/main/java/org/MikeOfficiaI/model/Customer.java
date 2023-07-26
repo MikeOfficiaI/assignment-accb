@@ -1,10 +1,10 @@
 package org.MikeOfficiaI.model;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.List;
 
+@Table(name = "customer")
 @Entity
-@Table
 public class Customer {
 
     @Id
@@ -12,14 +12,18 @@ public class Customer {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "first_name", nullable = false, unique = true)
-    String firstName;
+    @Column(name = "birth_date")
+    private int birthDate;
 
-    @Column(name = "last_name", nullable = false, length = 500)
-    String lastName;
+    @Column(name = "first_name")
+    private int firstName;
 
-    @Column(name = "birth_date", nullable = false, length = 500)
-    Date birthDate;
+    @Column(name = "last_name")
+    private int lastName;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_customer_id", referencedColumnName = "id")
+    private List<Contract> contractList;
 
     public Long getId() {
         return id;
@@ -29,27 +33,35 @@ public class Customer {
         this.id = id;
     }
 
-    public String getFirstName() {
+    public int getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(int firstName) {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    public int getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(int lastName) {
         this.lastName = lastName;
     }
 
-    public Date getBirthDate() {
+    public int getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(int birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public List<Contract> getContractList() {
+        return contractList;
+    }
+
+    public void setContractList(List<Contract> contractList) {
+        this.contractList = contractList;
     }
 }

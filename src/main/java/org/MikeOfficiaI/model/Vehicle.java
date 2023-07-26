@@ -11,20 +11,24 @@ public class Vehicle {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "brand", nullable = false, length = 400)
+    @Column(name = "brand")
     private String brand;
 
-    @Column(name = "model", nullable = false, length = 400)
+    @Column(name = "model")
     private String model;
 
-    @Column(name = "year", nullable = false)
+    @Column(name = "vin")
+    private String vin;
+
+    @Column(nullable = false)
     private int year;
 
-    @Column(name = "car_vin", nullable = false)
-    private Long carId;
-
-    @Column(name = "price", nullable = false)
+    @Column(nullable = false)
     private int price;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_contract_id")
+    private Contract contract;
 
     public Long getId() {
         return id;
@@ -58,12 +62,12 @@ public class Vehicle {
         this.year = year;
     }
 
-    public Long getCarId() {
-        return carId;
+    public String getVin() {
+        return vin;
     }
 
-    public void setCarId(Long carId) {
-        this.carId = carId;
+    public void setVin(String vin) {
+        this.vin = vin;
     }
 
     public int getPrice() {
