@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css"/>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div>
+    <h2>Allane Test Project - Leasing Contracts</h2>
+    <tr>
+
+        <div class="col-sm-5" align="center">
+<!--            <div class="panel-body" align="center">-->
+                <table border="1" bordercolor = "black" align="center" width="950">
+<!--                    <thead class="thead-dark">-->
+                    <tr bgcolor="lightgrey" align="center">
+                        <th width="150"> Contract NO</th>
+                        <th width="150">Customer</th>
+                        <th width="150">Vehicle</th>
+                        <th width="150">VIN</th>
+                        <th width="150">Monthly Rate</th>
+                        <th width="150">Vehicle Price</th>
+                        <th width="150">Details</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="contracts : ${listscontract}" align="center">
+                        <td th:text="${contract.contractNumber}">Contract NO</td>
+                        <td th:text="${contract.customer}">Customer</td>
+                        <td th:text="${contract.vehicle}">Vehicle</td>
+                        <td th:text="${contract.vin}">VIN</td>
+                        <td th:text="${contract.monthlyRate}">Monthly Rate</td>
+                        <td th:text="${contract.price}">Price</td>
+                        <td th:text="${contract.details}">Details</td>
+<!--                        <td>-->
+<!--                            <a th:href="@{'/edit/' + ${student.id}}">Edit</a>-->
+<!--                        </td>-->
+<!--                        <td>-->
+<!--                            <a th:href="@{'/delete/' + ${student.id}}">Delete</a>-->
+<!--                        </td>-->
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </tr>
+    <tr>
+        <div align="left">
+            <h5><a th:href="@{'/new'}">Add new Contract</a></h5>
+        </div>
+    </tr>
+    <tr>
+        <div align="left">
+            <h5><a th:href="@{'/new'}">Add new Customer</a></h5>
+        </div>
+    </tr>
+    <tr>
+        <div align="left">
+            <h5><a th:href="@{'/new'}">Add new Vehicle</a></h5>
+        </div>
+    </tr>
+</div>
+</table>
+</body>
+</html>

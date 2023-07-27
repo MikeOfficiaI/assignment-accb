@@ -2,6 +2,7 @@ package org.MikeOfficiaI.controller;
 
 import org.MikeOfficiaI.model.Vehicle;
 import org.MikeOfficiaI.service.VehicleService;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,8 +18,16 @@ public class VehicleController {
     }
 
     @PostMapping("/addVehicle")
-    public Vehicle postVehicle(@RequestBody Vehicle vehicle) {
-        return vehicleService.saveCustomer(vehicle);
+    public String postVehicle(@ModelAttribute("vehicle") Vehicle vehicle) {
+        vehicleService.saveCustomer(vehicle);
+        return "redirect:/contract";
+    }
+
+    @GetMapping("/")
+    public String viewHomePage(Model model) {
+        List<Vehicle> liststudent = vehicleService.getVehicles();
+        model.addAttribute("listscontract", liststudent);
+        return "index";
     }
 
     @GetMapping("/getVehicle")

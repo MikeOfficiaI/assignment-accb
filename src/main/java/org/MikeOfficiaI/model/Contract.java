@@ -35,8 +35,14 @@ public class Contract {
     @Column(nullable = false)
     private int year;
 
+    @Column(nullable = false)
+    private int price;
+
     @OneToOne(mappedBy = "contract")
     private Vehicle vehicle;
+
+    @Column(name = "details")
+    private String details;
 
     @ManyToOne
     @JoinColumn(name = "fk_customer_id")
