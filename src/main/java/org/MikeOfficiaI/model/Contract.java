@@ -17,32 +17,9 @@ public class Contract {
     @Column(name = "monthly_rate", nullable = false)
     private int monthlyRate;
 
-    @Column(name = "first_name")
-    private String firstName;
-
-    @Column(name = "last_name")
-    private String lastName;
-
-    @Column(name = "brand")
-    private String brand;
-
-    @Column(name = "model")
-    private String model;
-
-    @Column(name = "vin")
-    private String vin;
-
-    @Column(nullable = false)
-    private int year;
-
-    @Column(nullable = false)
-    private int price;
-
-    @OneToOne(mappedBy = "contract")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fk_vehicle_id")
     private Vehicle vehicle;
-
-    @Column(name = "details")
-    private String details;
 
     @ManyToOne
     @JoinColumn(name = "fk_customer_id")
@@ -72,54 +49,6 @@ public class Contract {
         this.monthlyRate = monthlyRate;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public String getVin() {
-        return vin;
-    }
-
-    public void setVin(String vin) {
-        this.vin = vin;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
     public Vehicle getVehicle() {
         return vehicle;
     }
@@ -134,5 +63,16 @@ public class Contract {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "id=" + id +
+                ", contractNumber=" + contractNumber +
+                ", monthlyRate=" + monthlyRate +
+                ", vehicle=" + vehicle +
+                ", customer=" + customer +
+                '}';
     }
 }

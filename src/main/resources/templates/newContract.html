@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>New Contract</title>
+</head>
+<body>
+<h2>Add New Contract</h2>
+<form action="saveCustomer" method="post">
+    <label for="contractNumber">Contract No :</label> <br/>
+    <input type="number" name="contractNumber"/> <br/>
+
+    <label for="monthlyRate">Monthly Rate :</label> <br/>
+    <input type="number" name="monthlyRate"/> <br/>
+
+<!--    <label for="customers">Customers :</label> <br/>-->
+<!--    <select style="width:150px;" name="customer" id="customer_id" class="form-control">-->
+<!--        <option th:each="contract : ${contracts}"-->
+<!--                th:value="${contract.id}"-->
+<!--                th:text="${contract.customer.firstName + ' ' + contract.customer.secondName}">-->
+<!--        </option>-->
+<!--    </select>-->
+
+    <label for="vehicle">Vehicle :</label> <br/>
+    <select style="width:150px;" name="vehicle" id="vehicle_id" class="form-control">
+        <option th:each="contract : ${contracts}"
+                th:value="${contract.getId()}"
+                th:text="${contract.getVehicle().getBrand()}">
+        </option>
+    </select>
+
+    <button type="submit">Save</button>
+</form>
+
+<form action="index" method="get">
+    <button type="submit">Back</button>
+</form>
+</body>
+</html>

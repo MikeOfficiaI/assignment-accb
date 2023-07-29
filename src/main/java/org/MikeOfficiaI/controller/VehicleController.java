@@ -1,14 +1,15 @@
 package org.MikeOfficiaI.controller;
 
+import org.MikeOfficiaI.model.Customer;
 import org.MikeOfficiaI.model.Vehicle;
 import org.MikeOfficiaI.service.VehicleService;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/vehicle")
+@Controller
 public class VehicleController {
 
     private VehicleService vehicleService;
@@ -17,21 +18,23 @@ public class VehicleController {
         this.vehicleService = vehicleService;
     }
 
-    @PostMapping("/addVehicle")
-    public String postVehicle(@ModelAttribute("vehicle") Vehicle vehicle) {
-        vehicleService.saveCustomer(vehicle);
-        return "redirect:/contract";
+    @GetMapping("/addVehicle")
+    public String postCustomer(Model model) {
+        List<Vehicle> vehicles = vehicleService.getVehicles();
+        model.addAttribute("vehicles", vehicles);
+        return "newVehicle";
     }
 
-    @GetMapping("/")
-    public String viewHomePage(Model model) {
-        List<Vehicle> liststudent = vehicleService.getVehicles();
-        model.addAttribute("listscontract", liststudent);
-        return "index";
+    @PostMapping("/saveVehicle")
+    public String postVehicle(@ModelAttribute Vehicle vehicle) {
+        System.out.println(vehicle.toString());
+        vehicleService.saveCustomer(vehicle);
+        return "newVehicle";
     }
 
     @GetMapping("/getVehicle")
-    public List<Vehicle> getVehicles() {
-        return vehicleService.getVehicles();
+    public void getVehicles(Model model) {
+        List<Vehicle> vehicles = vehicleService.getVehicles();
+        model.addAttribute("vehicles", vehicles);
     }
 }

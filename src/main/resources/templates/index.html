@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css"/>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 <div>
@@ -25,7 +25,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="contracts : ${listscontract}" align="center">
+                    <tr th:each="contracts : ${contracts}" align="center">
                         <td th:text="${contract.contractNumber}">Contract NO</td>
                         <td th:text="${contract.customer}">Customer</td>
                         <td th:text="${contract.vehicle}">Vehicle</td>
@@ -33,12 +33,6 @@
                         <td th:text="${contract.monthlyRate}">Monthly Rate</td>
                         <td th:text="${contract.price}">Price</td>
                         <td th:text="${contract.details}">Details</td>
-<!--                        <td>-->
-<!--                            <a th:href="@{'/edit/' + ${student.id}}">Edit</a>-->
-<!--                        </td>-->
-<!--                        <td>-->
-<!--                            <a th:href="@{'/delete/' + ${student.id}}">Delete</a>-->
-<!--                        </td>-->
                     </tr>
 
                     </tbody>
@@ -49,17 +43,17 @@
     </tr>
     <tr>
         <div align="left">
-            <h5><a th:href="@{'/new'}">Add new Contract</a></h5>
+            <h5><a th:href="@{'/addContract'}">Add new Contract</a></h5>
         </div>
     </tr>
     <tr>
         <div align="left">
-            <h5><a th:href="@{'/new'}">Add new Customer</a></h5>
+            <h5><a th:href="@{'/addCustomer'}">Add new Customer</a></h5>
         </div>
     </tr>
     <tr>
         <div align="left">
-            <h5><a th:href="@{'/new'}">Add new Vehicle</a></h5>
+            <h5><a th:href="@{'/addVehicle'}">Add new Vehicle</a></h5>
         </div>
     </tr>
 </div>

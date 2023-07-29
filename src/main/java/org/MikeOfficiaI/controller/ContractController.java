@@ -2,14 +2,16 @@ package org.MikeOfficiaI.controller;
 
 import org.MikeOfficiaI.model.Contract;
 import org.MikeOfficiaI.model.Customer;
+import org.MikeOfficiaI.model.Vehicle;
 import org.MikeOfficiaI.service.ContractService;
+import org.MikeOfficiaI.service.VehicleService;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/contract")
+@Controller
 public class ContractController {
 
     private ContractService contractService;
@@ -18,18 +20,12 @@ public class ContractController {
         this.contractService = contractService;
     }
 
-    @GetMapping("/")
-    public String viewHomePage(Model model) {
-        List<Contract> liststudent = contractService.listAll();
-        model.addAttribute("listscontract", liststudent);
-        System.out.print("Get / ");
-        return "index";
-    }
-
-    @GetMapping("/new")
-    public String add(Model model) {
-        model.addAttribute("student", new Contract());
-        return "new";
+    @GetMapping("/addContract")
+    public String postContract(Model model) {
+        List<Contract> customerList = contractService.listAll();
+        model.addAttribute("contracts", customerList);
+        Contract contract = new Contract();
+        return "newContract";
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)

@@ -13,13 +13,13 @@ public class Customer {
     private Long id;
 
     @Column(name = "birth_date")
-    private int birthDate;
+    private String birthDate;
 
     @Column(name = "first_name")
-    private int firstName;
+    private String firstName;
 
     @Column(name = "last_name")
-    private int lastName;
+    private String lastName;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_customer_id", referencedColumnName = "id")
@@ -33,27 +33,27 @@ public class Customer {
         this.id = id;
     }
 
-    public int getFirstName() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(int firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public int getLastName() {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(int lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public int getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(int birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -63,5 +63,16 @@ public class Customer {
 
     public void setContractList(List<Contract> contractList) {
         this.contractList = contractList;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", birthDate=" + birthDate +
+                ", firstName=" + firstName +
+                ", lastName=" + lastName +
+                ", contractList=" + contractList +
+                '}';
     }
 }

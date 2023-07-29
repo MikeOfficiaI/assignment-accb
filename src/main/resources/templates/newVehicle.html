@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>New Vehicle</title>
+</head>
+<body>
+<h2>Add New Vehicle</h2>
+
+<form action="getBrands" method="get">
+    <label for="brand">Brand :</label> <br/>
+    <select style="width:150px;" name="brand" id="brand_id" class="form-control">
+        <option th:each="brand : ${brands}"
+                th:value="${brand.getId()}"
+                th:text="${brand.getBrandName()}">
+        </option>
+    </select>
+</form>
+
+<form action="saveVehicle" method="post">
+    <label for="brand">Brand :</label> <br/>
+    <input type="text" name="brand"/> <br/>
+
+    <label for="model">Model :</label> <br/>
+    <input type="text" name="model"/> <br/>
+
+    <label for="vin">VIN :</label> <br/>
+    <input type="text" name="vin"/> <br/>
+
+    <label for="year">Year :</label> <br/>
+    <input type="number" min="1900" max="2099" step="1" value="2023" name="year" class="form-control"
+           placeholder="Year"/> <br/>
+
+    <label for="price">Price :</label> <br/>
+    <input type="number" min="0" max="100000000" name="price" class="form-control" placeholder="Price"/> <br/>
+
+    <button type="submit">Save</button>
+</form>
+
+<form action="index" method="get">
+    <button type="submit">Back</button>
+</form>
+</body>
+</html>

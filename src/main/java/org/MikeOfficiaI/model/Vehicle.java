@@ -11,10 +11,10 @@ public class Vehicle {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "brand")
-    private String brand;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fk_brand_id")
+    private Brand brand;
 
-    @Column(name = "model")
     private String model;
 
     @Column(name = "vin")
@@ -26,8 +26,7 @@ public class Vehicle {
     @Column(nullable = false)
     private int price;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_contract_id")
+    @OneToOne(mappedBy = "vehicle", cascade = CascadeType.ALL)
     private Contract contract;
 
     public Long getId() {
@@ -38,11 +37,11 @@ public class Vehicle {
         this.id = id;
     }
 
-    public String getBrand() {
+    public Brand getBrand() {
         return brand;
     }
 
-    public void setBrand(String brand) {
+    public void setBrand(Brand brand) {
         this.brand = brand;
     }
 
@@ -76,5 +75,18 @@ public class Vehicle {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "id=" + id +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", vin='" + vin + '\'' +
+                ", year=" + year +
+                ", price=" + price +
+                ", contract=" + contract +
+                '}';
     }
 }

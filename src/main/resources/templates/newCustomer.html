@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>New Customer</title>
+</head>
+<body>
+<h2>Add New Customer</h2>
+<form action="saveCustomer" method="post">
+    <label for="firstName">First Name :</label> <br/>
+    <input type="text" name="firstName"/> <br/>
+
+    <label for="lastName">Last Name :</label> <br/>
+    <input type="text" name="lastName"/> <br/>
+
+    <label for="birthDate">Birthdate :</label> <br/>
+    <input input type="date" name="birthDate" class="form-control" placeholder="Birth Date"/> <br/>
+
+    <button type="submit">Save</button>
+</form>
+
+<form action="index" method="get">
+    <button type="submit">Back</button>
+</form>
+</body>
+</html>
