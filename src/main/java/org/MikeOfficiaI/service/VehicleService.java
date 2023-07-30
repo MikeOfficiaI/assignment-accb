@@ -1,10 +1,11 @@
 package org.MikeOfficiaI.service;
 
-import org.MikeOfficiaI.model.Vehicle;
+import org.MikeOfficiaI.entity.Vehicle;
 import org.MikeOfficiaI.repository.VehicleRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class VehicleService {
@@ -19,7 +20,11 @@ public class VehicleService {
         return vehicleRepository.findAll();
     }
 
-    public Vehicle saveCustomer(Vehicle vehicle) {
+    public Vehicle saveVehicle(Vehicle vehicle) {
         return vehicleRepository.save(vehicle);
+    }
+
+    public Optional<Vehicle> getVehicleById(Long id) {
+        return vehicleRepository.findById(id);
     }
 }

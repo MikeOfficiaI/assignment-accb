@@ -1,6 +1,7 @@
 package org.MikeOfficiaI.service;
 
-import org.MikeOfficiaI.model.Contract;
+import org.MikeOfficiaI.dto.ContractDto;
+import org.MikeOfficiaI.entity.Contract;
 import org.MikeOfficiaI.repository.ContractRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,5 +24,17 @@ public class ContractService {
 
     public void saveContract(Contract contract) {
         contractRepository.save(contract);
+    }
+
+    public List<ContractDto> getContractVehicleJoin() {
+        List<ContractDto> list = contractRepository.getContractVehicleJoin();
+        list.forEach(l -> System.out.println(l));
+        return list;
+    }
+
+    public List<ContractDto> getContractCustomerJoin() {
+        List<ContractDto> list = contractRepository.getContractCustomerJoin();
+        list.forEach(l -> System.out.println(l));
+        return list;
     }
 }

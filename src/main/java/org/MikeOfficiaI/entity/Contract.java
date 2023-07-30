@@ -1,9 +1,12 @@
-package org.MikeOfficiaI.model;
+package org.MikeOfficiaI.entity;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "contract")
+@Table(name = "contracts")
 public class Contract {
 
     @Id
@@ -23,6 +26,7 @@ public class Contract {
 
     @ManyToOne
     @JoinColumn(name = "fk_customer_id")
+    @Fetch(FetchMode.JOIN)
     private Customer customer;
 
     public Long getId() {
@@ -63,16 +67,5 @@ public class Contract {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
-    }
-
-    @Override
-    public String toString() {
-        return "Contract{" +
-                "id=" + id +
-                ", contractNumber=" + contractNumber +
-                ", monthlyRate=" + monthlyRate +
-                ", vehicle=" + vehicle +
-                ", customer=" + customer +
-                '}';
     }
 }

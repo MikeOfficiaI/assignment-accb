@@ -1,6 +1,6 @@
 package org.MikeOfficiaI.service;
 
-import org.MikeOfficiaI.model.Customer;
+import org.MikeOfficiaI.entity.Customer;
 import org.MikeOfficiaI.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 

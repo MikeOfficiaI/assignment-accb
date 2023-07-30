@@ -1,9 +1,9 @@
-package org.MikeOfficiaI.model;
+package org.MikeOfficiaI.entity;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "vehicle")
+@Table(name = "vehicles")
 public class Vehicle {
 
     @Id
@@ -11,10 +11,10 @@ public class Vehicle {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_brand_id")
-    private Brand brand;
+    @Column(name = "brand")
+    private String brand;
 
+    @Column(name = "model")
     private String model;
 
     @Column(name = "vin")
@@ -26,7 +26,8 @@ public class Vehicle {
     @Column(nullable = false)
     private int price;
 
-    @OneToOne(mappedBy = "vehicle", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "vehicle", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "fk_contract_id")
     private Contract contract;
 
     public Long getId() {
@@ -35,14 +36,6 @@ public class Vehicle {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Brand getBrand() {
-        return brand;
-    }
-
-    public void setBrand(Brand brand) {
-        this.brand = brand;
     }
 
     public String getModel() {
@@ -77,11 +70,26 @@ public class Vehicle {
         this.price = price;
     }
 
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public Contract getContract() {
+        return contract;
+    }
+
+    public void setContract(Contract contract) {
+        this.contract = contract;
+    }
+
     @Override
     public String toString() {
         return "Vehicle{" +
                 "id=" + id +
-                ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", vin='" + vin + '\'' +
                 ", year=" + year +

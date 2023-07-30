@@ -1,6 +1,6 @@
 package org.MikeOfficiaI.repository;
 
-import org.MikeOfficiaI.model.Customer;
+import org.MikeOfficiaI.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

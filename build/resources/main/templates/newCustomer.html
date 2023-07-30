@@ -1,26 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:font-size="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="ISO-8859-1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css"/>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>New Customer</title>
 </head>
 <body>
-<h2>Add New Customer</h2>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand">Allane Test Project</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</nav>
+<h3>Create New Customer</h3>
 <form action="saveCustomer" method="post">
-    <label for="firstName">First Name :</label> <br/>
-    <input type="text" name="firstName"/> <br/>
 
-    <label for="lastName">Last Name :</label> <br/>
-    <input type="text" name="lastName"/> <br/>
+    <label style="margin:10px;" for="firstName">First Name :</label> <br/>
+    <input style="margin:10px;" type="text" name="firstName"/> <br/>
 
-    <label for="birthDate">Birthdate :</label> <br/>
-    <input input type="date" name="birthDate" class="form-control" placeholder="Birth Date"/> <br/>
+    <label style="margin:10px;" for="lastName">Last Name :</label> <br/>
+    <input style="margin:10px;" type="text" name="lastName"/> <br/>
 
-    <button type="submit">Save</button>
+    <label style="margin:10px;" for="birthDate">Birthdate :</label> <br/>
+    <input style="margin:10px; width: 175px;" input type="date" name="birthDate" class="form-control" placeholder="Birth Date"/> <br/>
+
+    <button style="margin:10px; width:100px" type="submit">Save</button>
 </form>
 
-<form action="index" method="get">
-    <button type="submit">Back</button>
-</form>
+<div class = "row">
+    <div class = "col-lg-3">
+        <a th:href = "@{/index}" style="margin:10px; width:100px" class = "btn btn-primary btn-sm mb-3">Back </a>
+    </div>
+</div>
 </body>
 </html>

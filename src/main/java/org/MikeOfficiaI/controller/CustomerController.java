@@ -1,7 +1,6 @@
 package org.MikeOfficiaI.controller;
 
-import org.MikeOfficiaI.model.Customer;
-import org.MikeOfficiaI.model.Vehicle;
+import org.MikeOfficiaI.entity.Customer;
 import org.MikeOfficiaI.service.CustomerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,17 +17,10 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping("/index")
-    public String index(Model model) {
-        List<Customer> customers = customerService.getCustomers();
-        model.addAttribute("customers", customers);
-        return "index";
-    }
-
     @GetMapping("/addCustomer")
     public String postCustomer(Model model) {
         List<Customer> customerList = customerService.getCustomers();
-        model.addAttribute("contracts", customerList);
+        model.addAttribute("customers", customerList);
         return "newCustomer";
     }
 

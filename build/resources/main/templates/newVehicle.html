@@ -1,44 +1,64 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="ISO-8859-1">
-    <title>New Vehicle</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css"/>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>New Customer</title>
 </head>
 <body>
-<h2>Add New Vehicle</h2>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand">Allane Test Project</a>
 
-<form action="getBrands" method="get">
-    <label for="brand">Brand :</label> <br/>
-    <select style="width:150px;" name="brand" id="brand_id" class="form-control">
-        <option th:each="brand : ${brands}"
-                th:value="${brand.getId()}"
-                th:text="${brand.getBrandName()}">
-        </option>
-    </select>
-</form>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</nav>
+<h3>Create New Vehicle</h3>
 
 <form action="saveVehicle" method="post">
-    <label for="brand">Brand :</label> <br/>
-    <input type="text" name="brand"/> <br/>
 
-    <label for="model">Model :</label> <br/>
-    <input type="text" name="model"/> <br/>
+<!--    <form action="getBrand" method="get">-->
+<!--        <label for="brand">Brand :</label> <br/>-->
+<!--        <select style="width:150px;" name="brand" id="brand_id" class="form-control">-->
+<!--            <option th:each="vehicle : ${vehicles}"-->
+<!--                    th:value="${vehicle.getId()}"-->
+<!--                    th:text="${vehicle.getBrand()}">-->
+<!--            </option>-->
+<!--        </select>-->
+<!--    </form>-->
 
-    <label for="vin">VIN :</label> <br/>
-    <input type="text" name="vin"/> <br/>
+<!--    <label for="model">Model :</label> <br/>-->
+<!--    <select style="width:150px;" name="model" id="model_id" class="form-control">-->
+<!--        <option th:each="vehicle : ${vehicles}"-->
+<!--                th:value="${vehicle.getId()}"-->
+<!--                th:text="${vehicle.getModel()}">-->
+<!--        </option>-->
+<!--    </select>-->
 
-    <label for="year">Year :</label> <br/>
-    <input type="number" min="1900" max="2099" step="1" value="2023" name="year" class="form-control"
+    <label style="margin:10px;" for="brand">Brand :</label> <br/>
+    <input style="margin:10px;" type="text" name="brand"/> <br/>
+
+    <label style="margin:10px;" for="model">Model :</label> <br/>
+    <input style="margin:10px;" type="text" name="model"/> <br/>
+
+    <label style="margin:10px;" for="vin">VIN :</label> <br/>
+    <input style="margin:10px;" type="text" name="vin"/> <br/>
+
+    <label style="margin:10px; width:175px" for="year">Year :</label> <br/>
+    <input style="margin:10px; width:175px" type="number" min="1900" max="2099" step="1" value="2023" name="year" class="form-control"
            placeholder="Year"/> <br/>
 
-    <label for="price">Price :</label> <br/>
-    <input type="number" min="0" max="100000000" name="price" class="form-control" placeholder="Price"/> <br/>
+    <label style="margin:10px; width:175px" for="price">Price :</label> <br/>
+    <input style="margin:10px; width:175px" type="number" min="0" max="100000000" name="price" class="form-control" placeholder="Price"/> <br/>
 
-    <button type="submit">Save</button>
+    <button style="margin:10px; width:100px" type="submit">Save</button>
 </form>
 
-<form action="index" method="get">
-    <button type="submit">Back</button>
-</form>
+<div class = "row">
+    <div class = "col-lg-3">
+        <a th:href = "@{/index}" style="margin:10px; width:100px" class = "btn btn-primary btn-sm mb-3">Back </a>
+    </div>
+</div>
 </body>
 </html>
