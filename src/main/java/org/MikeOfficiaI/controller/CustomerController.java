@@ -17,21 +17,21 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping("/addCustomer")
+    @GetMapping("/customer/add")
     public String postCustomer(Model model) {
         List<Customer> customerList = customerService.getCustomers();
         model.addAttribute("customers", customerList);
         return "newCustomer";
     }
 
-    @PostMapping("/saveCustomer")
+    @PostMapping("/customer/save")
     public String postVehicle(@ModelAttribute Customer customer) {
         System.out.println(customer.toString());
         customerService.saveCustomer(customer);
         return "newCustomer";
     }
 
-    @GetMapping("/getCustomer")
+    @GetMapping("/customer/get")
     public List<Customer> getCustomers() {
         return customerService.getCustomers();
     }

@@ -15,7 +15,7 @@
     </button>
 </nav>
 <h3>Create New Customer</h3>
-<form action="saveCustomer" method="post">
+<form action="/customer/save" method="post">
 
     <label style="margin:10px;" for="firstName">First Name :</label> <br/>
     <input style="margin:10px;" type="text" name="firstName"/> <br/>
@@ -31,7 +31,7 @@
 
 <div class = "row">
     <div class = "col-lg-3">
-        <a th:href = "@{/index}" style="margin:10px; width:100px" class = "btn btn-primary btn-sm mb-3">Back </a>
+        <a th:href = "@{/contracts}" style="margin:10px; width:100px" class = "btn btn-primary btn-sm mb-3">Back </a>
     </div>
 </div>
 </body>

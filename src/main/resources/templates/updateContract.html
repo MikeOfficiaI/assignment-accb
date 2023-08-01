@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>New Contract</title>
+    <title>Update Contract</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -16,7 +16,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 </nav>
-<h3>Create New Contract</h3>
+<h3>Update Contract</h3>
 <form action="/contract/save" method="post">
 
     <label style="margin:10px;" for="contractNumber">Contract No :</label> <br/>
@@ -27,7 +27,7 @@
 
     <label style="margin:10px;" for="customers">Customers :</label> <br/>
     <select style="margin:10px; width:150px;" name="customer" id="fk_customer_id" class="form-control">
-        <option th:each="contract : ${cuscontracts}"
+        <option th:each="contract : ${contracts}"
                 th:value="${contract.getCustomer().getId()}"
                 th:text="${contract.getCustomer().getFirstName() + ' ' + contract.getCustomer().getLastName()}">
         </option>
@@ -36,7 +36,7 @@
 
     <label style="margin:10px;" for="vehicles">Vehicle :</label> <br/>
     <select style="margin:10px; width:450px;" name="vehicle" id="fk_vehicle_id" class="form-control">
-        <option th:each="vehicle : ${vehcontracts}"
+        <option th:each="vehicle : ${contracts}"
                 th:value="${vehicle.getVehicle().getId()}"
                 th:text="${vehicle.getVehicle().getBrand() + ' ' + vehicle.getVehicle().getModel + ', ('
                 + vehicle.getVehicle().getYear + '), VIN: ' + vehicle.getVehicle().getVin}">

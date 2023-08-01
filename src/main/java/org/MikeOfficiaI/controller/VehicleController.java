@@ -19,20 +19,20 @@ public class VehicleController {
         this.vehicleService = vehicleService;
     }
 
-    @GetMapping("/addVehicle")
+    @GetMapping("/vehicle/add")
     public String getVehicle(Model model) {
         List<Vehicle> vehicles = vehicleService.getVehicles();
         model.addAttribute("vehicles", vehicles);
         return "newVehicle";
     }
 
-    @PostMapping("/saveVehicle")
+    @PostMapping("/vehicle/save")
     public String postVehicle(@ModelAttribute Vehicle vehicle) {
         vehicleService.saveVehicle(vehicle);
         return "newVehicle";
     }
 
-    @GetMapping("/getVehicle")
+    @GetMapping("/vehicle/get")
     public void getVehicles(Model model) {
         List<Vehicle> vehicles = vehicleService.getVehicles();
         model.addAttribute("vehicles", vehicles);

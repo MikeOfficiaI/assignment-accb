@@ -16,25 +16,7 @@
 </nav>
 <h3>Create New Vehicle</h3>
 
-<form action="saveVehicle" method="post">
-
-<!--    <form action="getBrand" method="get">-->
-<!--        <label for="brand">Brand :</label> <br/>-->
-<!--        <select style="width:150px;" name="brand" id="brand_id" class="form-control">-->
-<!--            <option th:each="vehicle : ${vehicles}"-->
-<!--                    th:value="${vehicle.getId()}"-->
-<!--                    th:text="${vehicle.getBrand()}">-->
-<!--            </option>-->
-<!--        </select>-->
-<!--    </form>-->
-
-<!--    <label for="model">Model :</label> <br/>-->
-<!--    <select style="width:150px;" name="model" id="model_id" class="form-control">-->
-<!--        <option th:each="vehicle : ${vehicles}"-->
-<!--                th:value="${vehicle.getId()}"-->
-<!--                th:text="${vehicle.getModel()}">-->
-<!--        </option>-->
-<!--    </select>-->
+<form action="/vehicle/save" method="post">
 
     <label style="margin:10px;" for="brand">Brand :</label> <br/>
     <input style="margin:10px;" type="text" name="brand"/> <br/>
@@ -57,7 +39,7 @@
 
 <div class = "row">
     <div class = "col-lg-3">
-        <a th:href = "@{/index}" style="margin:10px; width:100px" class = "btn btn-primary btn-sm mb-3">Back </a>
+        <a th:href = "@{/contracts}" style="margin:10px; width:100px" class = "btn btn-primary btn-sm mb-3">Back </a>
     </div>
 </div>
 </body>

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:margin="http://www.w3.org/1999/xhtml">
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css"/>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>New Contract</title>
 </head>
 <body>
@@ -15,36 +17,39 @@
     </button>
 </nav>
 <h3>Create New Contract</h3>
-<form action="saveContract" method="post">
+<form action="/contract/save" method="post">
 
     <label style="margin:10px;" for="contractNumber">Contract No :</label> <br/>
-    <input style="margin:10px;" type="number" name="contractNumber"/> <br/>
+    <input style="margin:10px; width:150px" type="number" name="contractNumber"/> <br/>
 
     <label style="margin:10px;" for="monthlyRate">Monthly Rate :</label> <br/>
-    <input style="margin:10px;" type="number" name="monthlyRate"/> <br/>
+    <input style="margin:10px; width:150px;" type="number" name="monthlyRate"/> <br/>
 
     <label style="margin:10px;" for="customers">Customers :</label> <br/>
     <select style="margin:10px; width:150px;" name="customer" id="fk_customer_id" class="form-control">
         <option th:each="contract : ${cuscontracts}"
-                th:value="${contract.id}"
-                th:text="${contract.getFirstName() + ' ' + contract.getLastName()}">
+                th:value="${contract.getCustomer().getId()}"
+                th:text="${contract.getCustomer().getFirstName() + ' ' + contract.getCustomer().getLastName()}">
         </option>
     </select>
+    <p><a th:href="@{/customer/add}" style="margin:10px;"><span class="fa fa-external-link"> Add New Customer</span></a></p>
 
     <label style="margin:10px;" for="vehicles">Vehicle :</label> <br/>
-    <select style="margin:10px; width:150px;" name="vehicle" id="fk_vehicle_id" class="form-control">
+    <select style="margin:10px; width:450px;" name="vehicle" id="fk_vehicle_id" class="form-control">
         <option th:each="vehicle : ${vehcontracts}"
-                th:value="${vehicle.getId()}"
-                th:text="${vehicle.getBrand()}">
+                th:value="${vehicle.getVehicle().getId()}"
+                th:text="${vehicle.getVehicle().getBrand() + ' ' + vehicle.getVehicle().getModel + ', ('
+                + vehicle.getVehicle().getYear + '), VIN: ' + vehicle.getVehicle().getVin}">
         </option>
     </select>
+    <p><a th:href="@{/vehicle/add}" style="margin:10px;"><span class="fa fa-external-link"> Add New Vehicle</span></a></p>
 
     <button style="margin:10px; width:100px" type="submit">Save</button>
 </form>
 
 <div class = "row">
     <div class = "col-lg-3">
-        <a th:href = "@{/index}" style="margin:10px; width:100px" class = "btn btn-primary btn-sm mb-3">Back </a>
+        <a th:href = "@{/contracts}" style="margin:10px; width:100px" class = "btn btn-primary btn-sm mb-3">Back </a>
     </div>
 </div>
 </body>

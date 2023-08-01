@@ -11,13 +11,12 @@ import java.util.List;
 @Repository
 public interface ContractRepository extends JpaRepository<Contract, Long> {
 
-    @Query("SELECT new org.MikeOfficiaI.dto.ContractDto(c.contractNumber, c.monthlyRate, v.brand, v.model, v.vin, v.year, v.price)"
+    @Query("SELECT new org.MikeOfficiaI.dto.ContractDto(c.contractNumber, c.monthlyRate, v)"
             + "FROM Contract c RIGHT JOIN c.vehicle v")
     List<ContractDto> getContractVehicleJoin();
 
-    @Query("SELECT new org.MikeOfficiaI.dto.ContractDto(c.contractNumber, c.monthlyRate, e.firstName, e.lastName)"
+    @Query("SELECT new org.MikeOfficiaI.dto.ContractDto(c.contractNumber, c.monthlyRate, e)"
             + "FROM Contract c RIGHT JOIN c.customer e")
     List<ContractDto> getContractCustomerJoin();
-
 
 }
