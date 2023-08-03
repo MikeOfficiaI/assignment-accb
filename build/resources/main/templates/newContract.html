@@ -17,19 +17,22 @@
     </button>
 </nav>
 <h3>Create New Contract</h3>
+<div th:if="${message}" class="alert alert-success text-center">
+    [[${message}]]
+</div>
 <form action="/contract/save" method="post">
 
     <label style="margin:10px;" for="contractNumber">Contract No :</label> <br/>
-    <input style="margin:10px; width:150px" type="number" name="contractNumber"/> <br/>
+    <input style="margin:10px; width:150px" type="number" required minlength="4" name="contractNumber"/> <br/>
 
     <label style="margin:10px;" for="monthlyRate">Monthly Rate :</label> <br/>
-    <input style="margin:10px; width:150px;" type="number" name="monthlyRate"/> <br/>
+    <input style="margin:10px; width:150px;" type="number" required minlength="1" name="monthlyRate"/> <br/>
 
     <label style="margin:10px;" for="customers">Customers :</label> <br/>
     <select style="margin:10px; width:150px;" name="customer" id="fk_customer_id" class="form-control">
-        <option th:each="contract : ${cuscontracts}"
-                th:value="${contract.getCustomer().getId()}"
-                th:text="${contract.getCustomer().getFirstName() + ' ' + contract.getCustomer().getLastName()}">
+        <option th:each="contracts : ${cuscontracts}"
+                th:value="${contracts.getCustomer().getId()}"
+                th:text="${contracts.getCustomer().getFirstName() + ' ' + contracts.getCustomer().getLastName()}">
         </option>
     </select>
     <p><a th:href="@{/customer/add}" style="margin:10px;"><span class="fa fa-external-link"> Add New Customer</span></a></p>

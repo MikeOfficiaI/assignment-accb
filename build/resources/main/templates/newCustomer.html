@@ -15,13 +15,16 @@
     </button>
 </nav>
 <h3>Create New Customer</h3>
+<div th:if="${message}" class="alert alert-success text-center">
+    [[${message}]]
+</div>
 <form action="/customer/save" method="post">
 
     <label style="margin:10px;" for="firstName">First Name :</label> <br/>
-    <input style="margin:10px;" type="text" name="firstName"/> <br/>
+    <input style="margin:10px;" type="text" required minlength="2" name="firstName"/> <br/>
 
     <label style="margin:10px;" for="lastName">Last Name :</label> <br/>
-    <input style="margin:10px;" type="text" name="lastName"/> <br/>
+    <input style="margin:10px;" type="text" required minlength="2" name="lastName"/> <br/>
 
     <label style="margin:10px;" for="birthDate">Birthdate :</label> <br/>
     <input style="margin:10px; width: 175px;" input type="date" name="birthDate" class="form-control" placeholder="Birth Date"/> <br/>

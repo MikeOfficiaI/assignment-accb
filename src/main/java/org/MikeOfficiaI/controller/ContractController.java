@@ -2,14 +2,12 @@ package org.MikeOfficiaI.controller;
 
 import org.MikeOfficiaI.dto.ContractDto;
 import org.MikeOfficiaI.entity.Contract;
+import org.MikeOfficiaI.exception.ContractNotFoundException;
 import org.MikeOfficiaI.service.ContractService;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -40,15 +38,11 @@ public class ContractController {
         return "newContract";
     }
 
-    @RequestMapping(value = "/contract/save", method = RequestMethod.POST)
-    public String saveContract(@ModelAttribute("contracts") ContractDto contractDto) {
-        Contract contract = new Contract();
-        contract.setContractNumber(contractDto.getContractNumber());
-        contract.setMonthlyRate(contractDto.getMonthlyRate());
-        contract.setVehicle(contractDto.getVehicle());
-        contract.setCustomer(contractDto.getCustomer());
+    @PostMapping("/contract/save")
+    public String saveContract(@ModelAttribute("contract") Contract contract, RedirectAttributes redirectAttributes) {
         contractService.saveContract(contract);
-        return "newContract";
+        redirectAttributes.addFlashAttribute("message", "The contract has been created successfully.");
+        return "redirect:/contracts";
     }
 
     @RequestMapping("/delete/{id}")
@@ -58,14 +52,18 @@ public class ContractController {
     }
 
     @RequestMapping("/update/{id}")
-    public ModelAndView updateContract(@PathVariable("id") int id){
-        ModelAndView mav = new ModelAndView("newContract");
-        Contract contract = contractService.get(id);
-        List<ContractDto> contractVehicle = contractService.getContractVehicleJoin();
-        mav.addObject("vehcontracts", contractVehicle);
-        List<ContractDto> contractCustomer = contractService.getContractCustomerJoin();
-        mav.addObject("cuscontracts", contractCustomer);
-        mav.addObject("contracts", contract);
-        return mav;
+    public String showUpdateForm(@PathVariable("id") int id, Model model, RedirectAttributes redirectAttributes) {
+        try {
+            Contract contract = contractService.get(id);
+            model.addAttribute("contract", contract);
+            List<ContractDto> contractVehicle = contractService.getContractVehicleJoin();
+            model.addAttribute("vehcontracts", contractVehicle);
+            List<ContractDto> contractCustomer = contractService.getContractCustomerJoin();
+            model.addAttribute("cuscontracts", contractCustomer);
+            return "updateContract";
+        } catch (ContractNotFoundException e) {
+            redirectAttributes.addFlashAttribute("message", "The contract has been saved successfully.");
+            return "redirect:/contracts";
+        }
     }
 }

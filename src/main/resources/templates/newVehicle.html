@@ -15,24 +15,26 @@
     </button>
 </nav>
 <h3>Create New Vehicle</h3>
-
+<div th:if="${message}" class="alert alert-success text-center">
+    [[${message}]]
+</div>
 <form action="/vehicle/save" method="post">
 
     <label style="margin:10px;" for="brand">Brand :</label> <br/>
-    <input style="margin:10px;" type="text" name="brand"/> <br/>
+    <input style="margin:10px;" type="text" required minlength="2" name="brand"/> <br/>
 
     <label style="margin:10px;" for="model">Model :</label> <br/>
-    <input style="margin:10px;" type="text" name="model"/> <br/>
+    <input style="margin:10px;" type="text" required minlength="1" name="model"/> <br/>
 
     <label style="margin:10px;" for="vin">VIN :</label> <br/>
-    <input style="margin:10px;" type="text" name="vin"/> <br/>
+    <input style="margin:10px;" type="text" required minlength="4" name="vin"/> <br/>
 
     <label style="margin:10px; width:175px" for="year">Year :</label> <br/>
-    <input style="margin:10px; width:175px" type="number" min="1900" max="2099" step="1" value="2023" name="year" class="form-control"
+    <input style="margin:10px; width:175px" required minlength="4" type="number" min="1900" max="2099" step="1" value="2023" name="year" class="form-control"
            placeholder="Year"/> <br/>
 
     <label style="margin:10px; width:175px" for="price">Price :</label> <br/>
-    <input style="margin:10px; width:175px" type="number" min="0" max="100000000" name="price" class="form-control" placeholder="Price"/> <br/>
+    <input style="margin:10px; width:175px" required minlength="1" type="number" min="0" max="100000000" name="price" class="form-control" placeholder="Price"/> <br/>
 
     <button style="margin:10px; width:100px" type="submit">Save</button>
 </form>
