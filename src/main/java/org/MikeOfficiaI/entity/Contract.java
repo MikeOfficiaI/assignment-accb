@@ -29,6 +29,9 @@ public class Contract {
     @Fetch(FetchMode.JOIN)
     private Customer customer;
 
+    @Column(name = "details", nullable = true)
+    private String details;
+
     public Long getId() {
         return id;
     }
@@ -67,5 +70,13 @@ public class Contract {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
     }
 }

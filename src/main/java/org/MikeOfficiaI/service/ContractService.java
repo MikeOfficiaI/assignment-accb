@@ -41,13 +41,11 @@ public class ContractService {
 
     public List<ContractDto> getContractVehicleJoin() {
         List<ContractDto> list = contractRepository.getContractVehicleJoin();
-        list.forEach(l -> System.out.println(l));
         return list;
     }
 
     public List<ContractDto> getContractCustomerJoin() {
         List<ContractDto> list = contractRepository.getContractCustomerJoin();
-        list.forEach(l -> System.out.println(l));
         return list;
     }
 

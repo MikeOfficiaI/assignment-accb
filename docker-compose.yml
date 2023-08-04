@@ -1,0 +1,22 @@
+version: "3"
+services:
+  springboot:
+    image: assignment-accb-1.0-plain
+    restart: always
+    build: .
+    ports:
+      - 9090:8080
+    environment:
+      MYSQL_HOST: mysqldb
+      MYSQL_DATABASE: test
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_PORT: 3306
+  mysqldb:
+    container_name: mysqldb
+    image: mysql
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_DATABASE: test
+      MYSQL_ROOT_PASSWORD: admin

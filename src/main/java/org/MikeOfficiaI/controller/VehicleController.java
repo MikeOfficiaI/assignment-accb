@@ -1,5 +1,7 @@
 package org.MikeOfficiaI.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.MikeOfficiaI.dto.ContractDto;
 import org.MikeOfficiaI.entity.Contract;
 import org.MikeOfficiaI.entity.Vehicle;
@@ -16,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 
 @Controller
+@Api(description = "Controller for the vehicle entity")
 public class VehicleController {
 
     private VehicleService vehicleService;
@@ -25,6 +28,7 @@ public class VehicleController {
     }
 
     @GetMapping("/vehicle/add")
+    @ApiOperation("Get list of all customers and viewing the creating new customer page")
     public String getVehicle(Model model) {
         List<Vehicle> vehicles = vehicleService.getVehicles();
         model.addAttribute("vehicles", vehicles);
@@ -32,19 +36,15 @@ public class VehicleController {
     }
 
     @PostMapping("/vehicle/save")
+    @ApiOperation("Saving new vehicle")
     public String postVehicle(@ModelAttribute Vehicle vehicle, RedirectAttributes redirectAttributes) {
         vehicleService.saveVehicle(vehicle);
         redirectAttributes.addFlashAttribute("message", "The vehicle has been created successfully.");
         return "redirect:/contracts";
     }
 
-    @GetMapping("/vehicle/get")
-    public void getVehicles(Model model) {
-        List<Vehicle> vehicles = vehicleService.getVehicles();
-        model.addAttribute("vehicles", vehicles);
-    }
-
     @GetMapping("/vehicle/get/{id}")
+    @ApiOperation("Getting specific vehicle")
     public Vehicle getVehicle(@PathVariable Long id) {
         return vehicleService.getVehicleById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Vehicle not found"));

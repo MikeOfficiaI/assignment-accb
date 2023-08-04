@@ -1,6 +1,10 @@
 package org.MikeOfficiaI.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Table(name = "customer")
@@ -12,18 +16,26 @@ public class Customer {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "birth_date")
-    private String birthDate;
+    @Column(name = "birth_date", nullable = false)
+    private Date birthDate;
 
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_customer_id", referencedColumnName = "id")
-    private List<Contract> contractList;
+    private List<Contract> contractList = new ArrayList<>();
+
+    public Customer() {}
+
+    public Customer(Date birthDate, String firstName, String lastName) {
+        this.birthDate = birthDate;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     public Long getId() {
         return id;
@@ -49,11 +61,11 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public String getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -68,11 +80,9 @@ public class Customer {
     @Override
     public String toString() {
         return "Customer{" +
-                "id=" + id +
                 ", birthDate=" + birthDate +
                 ", firstName=" + firstName +
                 ", lastName=" + lastName +
-                ", contractList=" + contractList +
                 '}';
     }
 }

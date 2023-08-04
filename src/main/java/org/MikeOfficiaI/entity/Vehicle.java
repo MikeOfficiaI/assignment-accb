@@ -11,13 +11,13 @@ public class Vehicle {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "brand")
+    @Column(name = "brand", nullable = false)
     private String brand;
 
-    @Column(name = "model")
+    @Column(name = "model", nullable = false)
     private String model;
 
-    @Column(name = "vin")
+    @Column(name = "vin", nullable = true)
     private String vin;
 
     @Column(nullable = false)

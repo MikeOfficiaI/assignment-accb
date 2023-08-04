@@ -2,6 +2,7 @@ package org.MikeOfficiaI.service;
 
 import org.MikeOfficiaI.entity.Contract;
 import org.MikeOfficiaI.entity.Customer;
+import org.MikeOfficiaI.entity.Vehicle;
 import org.MikeOfficiaI.exception.ContractNotFoundException;
 import org.MikeOfficiaI.exception.CustomerNotFoundException;
 import org.MikeOfficiaI.repository.CustomerRepository;
@@ -25,6 +26,10 @@ public class CustomerService {
 
     public Customer saveCustomer(Customer customer) {
         return customerRepository.save(customer);
+    }
+
+    public Optional<Customer> getCustomerById(Long id) {
+        return customerRepository.findById(id);
     }
 
     public Customer get(long id) throws CustomerNotFoundException {
