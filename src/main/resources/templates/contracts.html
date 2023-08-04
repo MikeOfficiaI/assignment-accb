@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css"/>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Contracts</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand" >Allane Test Project</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" style="margin:10px;" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/contract/add}">Create Contract</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/vehicle/add}">Create Vehicle</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/customer/add}">Create Customer</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div>
+    <h2 style="margin:20px;">Leasing Contracts</h2>
+    <tr>
+        <div class="col-sm-5" style="margin:10px;" align="center">
+                <table border="1" bordercolor = "black" align="center" width="1225">
+                    <tr bgcolor="lightgrey" align="center">
+                        <th width="175"> Contract NO</th>
+                        <th width="175">Customer</th>
+                        <th width="175">Vehicle</th>
+                        <th width="175">VIN</th>
+                        <th width="175">Monthly Rate</th>
+                        <th width="175">Vehicle Price</th>
+                        <th width="175">Details</th>
+                        <th width="175">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="contract : ${contracts}" align="center">
+                        <td th:text="${contract.getContractNumber()}">Contract NO</td>
+                        <td th:text="${contract.getCustomer().getFirstName() + ' ' + contract.getCustomer().getLastName()}">Customer</td>
+                        <td th:text="${contract.getVehicle().getBrand() + ' ' + contract.getVehicle().getModel()}">Vehicle</td>
+                        <td th:text="${contract.getVehicle().getVin}">VIN</td>
+                        <td th:text="${contract.getMonthlyRate()}">Monthly Rate</td>
+                        <td th:text="${contract.getVehicle().getPrice()}">Price</td>
+                        <td th:text="${contract.getDetails()}">Details</td>
+                        <td>
+                            <a th:href = "@{'/update/' + ${contract.id}}"
+                               class="btn btn-primary">Update</a>
+                            <a th:href = "@{'/delete/' + ${contract.id}}"
+                               class="btn btn-primary">Delete
+                            </a>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </tr>
+</div>
+<div class = "row">
+    <div class = "col-lg-3">
+        <a th:href = "@{/contract/add}" style="margin:22px; width:175px" class = "btn btn-primary btn-sm mb-3">Create Contract </a>
+    </div>
+</div>
+</table>
+</body>
+</html>
