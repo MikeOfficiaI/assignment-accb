@@ -3,9 +3,9 @@ README for Assignment Project
 
 This README provides essential information on running the Assignment project:
 
-How to Start the Assignment Application
+How to Start the Assignment application
 ----------------------------
-To start the Allane application, follow these steps:
+To start the Assignment application, follow these steps:
 
 1. Clone the repository from GitHub: https://github.com/MikeOfficiaI/assignment-accb.git;
 2. Open the `application.properties` file located in the `src/main/resources` directory and configure the database connection properties according to your setup. If you have Docker, you can use the Dockerized database setup instructions provided later in this README.
@@ -18,7 +18,7 @@ To start the Allane application, follow these steps:
    ```
    gradle bootRun
    ```
-6. The Application will start, and you should see logs in the console.
+6. The application will start, and you should see logs in the console.
 
 Dockerized Database Setup
 -------------------------
@@ -82,7 +82,7 @@ The chosen solution for the Assignment project is based on Java Spring Boot with
 Frontend Hierarchy
 ============================
 
-The frontend hierarchy of the Allane project consists of multiple HTML pages, including `contracts.html`, `newContract.html`, `newCustomer.html`, `newVehicle.html`, `updateContract.html`, `updateCustomer.html` and `updateVehicle.html`.
+The frontend hierarchy of the Assignment project consists of multiple HTML pages, including `contracts.html`, `newContract.html`, `newCustomer.html`, `newVehicle.html`, `updateContract.html`, `updateCustomer.html` and `updateVehicle.html`.
 
 1. **contracts.html**
    This page is used as a start page and displays a list of contracts, as well as buttons to go to pages to change the data of cars, customers and contracts.
