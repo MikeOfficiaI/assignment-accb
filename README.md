@@ -84,23 +84,23 @@ Frontend Hierarchy
 
 The frontend hierarchy of the Assignment project consists of multiple HTML pages, including `contracts.html`, `newContract.html`, `newCustomer.html`, `newVehicle.html`, `updateContract.html`, `updateCustomer.html` and `updateVehicle.html`.
 
-1. **contracts.html**
+1. **contracts.html**:
    This page is used as a start page and displays a list of contracts, as well as buttons to go to pages to change the data of cars, customers and contracts.
 
-2. **newContract.html**
+2. **newContract.html**:
    On this page, leasing contracts are created. There is a choice of cars that do not have contracts, and from all available customers. There are buttons to go to the main page and to the pages for creating cars and customers.
 
-3. **newCustomer.html**
+3. **newCustomer.html**:
    On this page, customers are created. It is possible to add a first name, last name and date of birth. It is also possible to go to the main page.
 
-4. **newVehicle.html**
+4. **newVehicle.html**:
    This page is where cars are created. It is possible to add the brand, model, wine, year and price of the car. It is possible to go to the home page.
 
-5. **updateContract.html**
+5. **updateContract.html**:
    On this page, there are changes to these contracts. It is possible to change the customer to any other available. To change the details of a specific customer, you need to go to the page for changing the details of a customer. It is possible to change the car to available cars from the list. (!!!CARS THAT HAVE CONTRACTS WILL NOT BE AVAILABLE BECAUSE THE TABLES ARE JOINED ONE TO ONE!!!) To change the details of a specific car, you need to go to the page to change the details of the customer. Other parameters, such as contract number and monthly rate, are available for editing on this page.
 
-6  **updateVehicle.html**
+6  **updateVehicle.html**:
    This page is only accessible from the page for changing contract data. On this page, you can change the data of a car that has a contract. All parameters of the car are available for changing.
 
-7  **updateCustomer.html**
+7  **updateCustomer.html**:
    This page is only accessible from the page for changing contract data. On this page, you can change the customer data from a specific contract. All parameters of the customer are available for changing.
