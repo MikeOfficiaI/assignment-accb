@@ -47,16 +47,15 @@ public class CustomerController {
 
     @GetMapping("/customer/get/{id}")
     @ApiOperation("Getting specific customer")
-    public Customer getCustomer(@PathVariable Long id) {
-        return customerService.getCustomerById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer not found"));
+    public Customer getCustomer(@PathVariable Long id) throws CustomerNotFoundException {
+        return customerService.getCustomerById(id);
     }
 
     @RequestMapping("/customer/update/{id}")
     @ApiOperation("Update specific customer")
     public String showUpdateForm(@PathVariable("id") int id, Model model, RedirectAttributes redirectAttributes) {
         try {
-            Customer customer = customerService.get(id);
+            Customer customer = customerService.getCustomerById(id);
             model.addAttribute("customer", customer);
             List<Contract> contractList = customer.getContractList();
             model.addAttribute("contract", contractList);

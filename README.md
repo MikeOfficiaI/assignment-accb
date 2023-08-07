@@ -3,6 +3,7 @@ README for Assignment Project
 
 This README provides essential information on running the Assignment project:
 
+
 How to Start the Assignment application
 ----------------------------
 To start the Assignment application, follow these steps:
@@ -18,7 +19,8 @@ To start the Assignment application, follow these steps:
    ```
    gradle bootRun
    ```
-6. The application will start, and you should see logs in the console.
+6. The application will start, you should see logs in the console and can access via http://localhost:9090/contracts
+
 
 Dockerized Database Setup
 -------------------------
@@ -44,11 +46,15 @@ If you prefer to use Docker for the database setup, follow these additional step
    ```
    docker network connect {NETWROK_NAME} mysqldb
    ```
-7. Move to the root of the project and use this command to bring up the container:
+7. Build container for application:
+   ```
+   docker build -t assignment .
+   ```
+8. Move to the root of the project and use this command to bring up the container:
    ```
    docker run -p 9090:8080 --name assignment --net {NETWROK_NAME} -e MYSQL_HOST=mysqldb -e MYSQL_USER={USER} -e MYSQL_PASSWORD={PASSWORD} -e MYSQL_PORT=3306 assignment
    ```
-   Now you can access the application in http://localhost:9090/contracts.
+9. Now you can access the application in http://localhost:9090/contracts
 
 Docker-compose Setup
 -------------------------
@@ -74,9 +80,15 @@ Docker-compose Setup
 4. Use 'docker-compose up' to run our custom image;
 5. Now you can access the application in http://localhost:9090/contracts
 
+
 Reason for Chosen Solution
 --------------------------
-The chosen solution for the Assignment project is based on Java Spring Boot with Gradle as the build tool:
+The tools used were selected solely based on the functional requirements for the project:
+
+1. The Java programming language, Spring Boot and Hibernate Frameworks were used with the Gradle build tool based on task requirements.
+2. I used H2 database to test the functionality of the application, but based on the requirements, migrated the database from H2 to MySQL.
+3. I asked question about using frontend frameworks and got permission to use it, but ultimately decided to stick with the original task requirements.
+4. The openapi library was also implemented, which is available at http://localhost:8080/swagger-ui ; During its implementation, I ran into a problem, since the latest version of the library is 3.0.0, then there is a conflict with the spring boot version 2.7.5, which I used. The solution was implemented in the main Application class, but the number of project endpoints increased and the project description was not what was expected.
 
 
 Frontend Hierarchy
