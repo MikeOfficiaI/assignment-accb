@@ -28,11 +28,7 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
-    public Optional<Customer> getCustomerById(Long id) {
-        return customerRepository.findById(id);
-    }
-
-    public Customer get(long id) throws CustomerNotFoundException {
+    public Customer getCustomerById(long id) throws CustomerNotFoundException {
         Optional<Customer> customer = customerRepository.findById(id);
         if (customer.isPresent()) {
             return customer.get();
