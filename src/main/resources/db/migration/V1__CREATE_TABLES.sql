@@ -1,4 +1,4 @@
-CREATE TABLE test.customer (
+CREATE TABLE IF NOT EXISTS test.customer (
   id BIGINT NOT NULL AUTO_INCREMENT,
   first_name VARCHAR(255),
   last_name VARCHAR(255),
@@ -6,7 +6,7 @@ CREATE TABLE test.customer (
   PRIMARY KEY (id)
 );
 
-CREATE TABLE test.vehicles (
+CREATE TABLE IF NOT EXISTS test.vehicles (
   id BIGINT NOT NULL AUTO_INCREMENT,
   brand VARCHAR(255),
   model VARCHAR(255),
@@ -16,7 +16,7 @@ CREATE TABLE test.vehicles (
   PRIMARY KEY (id)
 );
 
-CREATE TABLE test.contracts (
+CREATE TABLE IF NOT EXISTS test.contracts (
   id BIGINT NOT NULL AUTO_INCREMENT,
   contract_number BIGINT,
   monthly_rate INTEGER,
